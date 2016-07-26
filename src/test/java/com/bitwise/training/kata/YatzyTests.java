@@ -43,9 +43,9 @@ public class YatzyTests {
         //given
         Yatzy yatzy = new Yatzy();
         //when
-        int actual = yatzy.yatzy(1,1,1,1,1);
+        int actual = yatzy.yatzyRule(1,1,1,1,1);
         int expected = 50;
-        int actual2 = yatzy.yatzy(1,1,1,2,1);
+        int actual2 = yatzy.yatzyRule(1,1,1,2,1);
         int expected2 = 0;
         //then
         Assert.assertEquals(expected, actual);
@@ -117,13 +117,13 @@ public class YatzyTests {
         Assert.assertEquals(expected2, actual2);
     }
     @Test
-    public void itShouldPerformSixsRule(){
+    public void itShouldPerformSixRule(){
         //given
         Yatzy yatzy = new Yatzy();
         //when
-        int actual = yatzy.sixs(6,6,6,6,1);
+        int actual = yatzy.six(6,6,6,6,1);
         int expected = 24;
-        int actual2 = yatzy.sixs(1,2,3,3,1);
+        int actual2 = yatzy.six(1,2,3,3,1);
         int expected2 = 0;
         //then
         Assert.assertEquals(expected, actual);
@@ -228,6 +228,21 @@ public class YatzyTests {
         Assert.assertEquals(expected, actual);
         Assert.assertEquals(expected2, actual2);
     }
-
+    @Test
+    public void itShouldPerformFullHouseRule(){
+        //given
+        Yatzy yatzy = new Yatzy();
+        //when
+        int actual = yatzy.fullHouse(1,1,2,2,2);
+        int expected = 8;
+        int actual2 = yatzy.fullHouse(2,2,3,3,4);
+        int expected2 = 0;
+        int actual3 = yatzy.fullHouse(4,4,4,4,4);
+        int expected3 = 0;
+        //then
+        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected2, actual2);
+        Assert.assertEquals(expected3, actual3);
+    }
 
 }

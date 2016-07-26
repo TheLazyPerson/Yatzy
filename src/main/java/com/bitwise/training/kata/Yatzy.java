@@ -1,17 +1,12 @@
 package com.bitwise.training.kata;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.List;
 
 
-public class Yatzy {
+class Yatzy {
 
 
-
-    private int score;
-
-    public void validate(Integer... dice) {
+     void validate(Integer... dice) {
         if (dice.length !=5){
             throw new InvalidDicesException();
         }
@@ -31,7 +26,7 @@ public class Yatzy {
         return chanceScore;
     }
 
-    public int yatzy(int... dice) {
+    public int yatzyRule(int... dice) {
 
         int first = dice[0];
         for(int i = 1; i < dice.length ; i++) {
@@ -88,7 +83,7 @@ public class Yatzy {
         }
         return fivesScore;
     }
-    public int sixs(int... dice) {
+    public int six(int... dice) {
         int fivesScore = 0;
         for (int diceSide: dice) {
             if (diceSide == 6){
@@ -187,6 +182,33 @@ public class Yatzy {
 
         return 0;
     }
+    public int fullHouse(int... dice) {
+        int[] diceFrequency = new int[6];
+        for( int d : dice )
+            diceFrequency[d-1]++;
+        boolean twosPairFound = false,threesPairFound = false;
+        int twosSide = 0,threesSide = 0;
+        //finding twos pair
+        for (int i = 0; i < diceFrequency.length; i++) {
+            if (diceFrequency[i] == 2){
+                twosPairFound = true;
+                twosSide = (i+1);
+            }
+        }
+        if (twosPairFound) {
+            for (int i = 0; i < diceFrequency.length; i++) {
+                if (diceFrequency[i] == 3) {
+                    threesPairFound = true;
+                    threesSide = (i+1);
+                }
+            }
+        }
+        if (twosPairFound && threesPairFound)
+            return ((twosSide * 2) + (threesSide * 3));
+
+        return 0;
+    }
+
 
 
 
