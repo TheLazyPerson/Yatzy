@@ -167,6 +167,38 @@ public class YatzyTests {
         Assert.assertEquals(expected3, actual3);
     }
 
+    @Test
+    public void itShouldPerformThreeOfAKindRule(){
+        //given
+        Yatzy yatzy = new Yatzy();
+        //when
+        int actual = yatzy.threeOfAKind(3,3,3,4,5);
+        int expected = 9;
+        int actual2 = yatzy.threeOfAKind(3,3,4,5,6);
+        int expected2 = 0;
+        int actual3 = yatzy.threeOfAKind(3,3,3,3,1);
+        int expected3 = 9;
+        //then
+        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected2, actual2);
+        Assert.assertEquals(expected3, actual3);
+    }
 
+    @Test
+    public void itShouldPerformFourOfAKindRule(){
+        //given
+        Yatzy yatzy = new Yatzy();
+        //when
+        int actual = yatzy.fourOfAKind(2,2,2,2,5);
+        int expected = 8;
+        int actual2 = yatzy.fourOfAKind(2,2,2,5,5);
+        int expected2 = 0;
+        int actual3 = yatzy.fourOfAKind(2,2,2,2,2);
+        int expected3 = 8;
+        //then
+        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected2, actual2);
+        Assert.assertEquals(expected3, actual3);
+    }
 
 }

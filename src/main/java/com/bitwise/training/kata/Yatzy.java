@@ -118,26 +118,15 @@ public class Yatzy {
 
     public int twoPair(int... dice) {
         int[] diceFrequency = new int[6];
-
-
-        for( int d : dice ) {
-
-            diceFrequency[d-1]++;
-        }
+        for( int d : dice )
+             diceFrequency[d-1]++;
 
         int numberOfPairs = 0;
         int pairSum = 0;
 
         for( int i = 0; i < diceFrequency.length; i++ ) {
-            //due to integer division you get only the number of pairs,
-            //i.e. if you have 3x 1 you get 1 pair, for 5x 1 you get 2 pairs
             int num = diceFrequency[i] / 2;
-
-            //total the number of pairs is just increases
             numberOfPairs += num;
-
-            //the total value of those pairs is the dice value (i+1)
-            //multiplied by the number of pairs and 2 (since it's a pair)
             pairSum += (i + 1 ) * 2 * num;
         }
 
@@ -146,6 +135,32 @@ public class Yatzy {
         }
         return 0;
     }
+
+    public int threeOfAKind(int... dice) {
+        int[] diceFrequency = new int[6];
+        for( int d : dice )
+            diceFrequency[d-1]++;
+
+        for (int i = 0; i < diceFrequency.length; i++) {
+            if(diceFrequency[i] >= 3 ){
+                return (i+1) * 3;
+            }
+        }
+        return 0;
+    }
+    public int fourOfAKind(int... dice) {
+        int[] diceFrequency = new int[6];
+        for( int d : dice )
+            diceFrequency[d-1]++;
+
+        for (int i = 0; i < diceFrequency.length; i++) {
+            if(diceFrequency[i] >= 4 ){
+                return (i+1) * 4;
+            }
+        }
+        return 0;
+    }
+
 
 
     public class InvalidDicesException extends RuntimeException {
