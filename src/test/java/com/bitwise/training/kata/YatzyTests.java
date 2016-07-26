@@ -201,4 +201,33 @@ public class YatzyTests {
         Assert.assertEquals(expected3, actual3);
     }
 
+    @Test
+    public void itShouldPerformSmallStraightRule(){
+        //given
+        Yatzy yatzy = new Yatzy();
+        //when
+        int actual = yatzy.smallStraight(1,2,3,4,5);
+        int expected = 15;
+        int actual2 = yatzy.smallStraight(2,2,2,5,5);
+        int expected2 = 0;
+        //then
+        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected2, actual2);
+    }
+
+    @Test
+    public void itShouldPerformLargeStraightRule(){
+        //given
+        Yatzy yatzy = new Yatzy();
+        //when
+        int actual = yatzy.largeStraight(1,2,3,4,5);
+        int expected = 0;
+        int actual2 = yatzy.largeStraight(2,3,4,5,6);
+        int expected2 = 20;
+        //then
+        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected2, actual2);
+    }
+
+
 }

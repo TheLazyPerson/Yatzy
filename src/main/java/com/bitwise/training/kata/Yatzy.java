@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Yatzy {
 
+
+
     private int score;
 
     public void validate(Integer... dice) {
@@ -115,7 +117,7 @@ public class Yatzy {
 
         return pairScore;
     }
-
+    // frequency count pattern taken from http://stackoverflow.com/questions/38585713/finding-two-pairs-from-integer-array-out-of-two-elements/38586797#38586797
     public int twoPair(int... dice) {
         int[] diceFrequency = new int[6];
         for( int d : dice )
@@ -148,6 +150,7 @@ public class Yatzy {
         }
         return 0;
     }
+
     public int fourOfAKind(int... dice) {
         int[] diceFrequency = new int[6];
         for( int d : dice )
@@ -158,6 +161,30 @@ public class Yatzy {
                 return (i+1) * 4;
             }
         }
+        return 0;
+    }
+
+    public int smallStraight(int... dice) {
+        int[] diceFrequency = new int[6];
+        for( int d : dice )
+            diceFrequency[d-1]++;
+
+        if (diceFrequency[0] == 1 && diceFrequency[1] == 1 && diceFrequency[2] == 1 && diceFrequency[3] == 1 && diceFrequency[4] == 1 )
+            return 15;
+
+
+        return 0;
+    }
+
+    public int largeStraight(int... dice) {
+        int[] diceFrequency = new int[6];
+        for( int d : dice )
+            diceFrequency[d-1]++;
+
+        if (diceFrequency[1] == 1 && diceFrequency[2] == 1 && diceFrequency[3] == 1 && diceFrequency[4] == 1 && diceFrequency[5] == 1 )
+            return 20;
+
+
         return 0;
     }
 
