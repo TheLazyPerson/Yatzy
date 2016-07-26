@@ -3,9 +3,7 @@ package com.bitwise.training.kata;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by omk on 7/25/2016.
- */
+
 public class YatzyTests {
 
     @Test(expected = Yatzy.InvalidDicesException.class)
@@ -150,6 +148,23 @@ public class YatzyTests {
         Assert.assertEquals(expected2, actual2);
         Assert.assertEquals(expected3, actual3);
         Assert.assertEquals(expected4, actual4);
+    }
+
+    @Test
+    public void itShouldPerformTwoPairRule(){
+        //given
+        Yatzy yatzy = new Yatzy();
+        //when
+        int actual = yatzy.twoPair(1,1,2,3,3);
+        int expected = 8;
+        int actual2 = yatzy.twoPair(1,1,2,3,4);
+        int expected2 = 0;
+        int actual3 = yatzy.twoPair(1,1,2,2,2);
+        int expected3 = 6;
+        //then
+        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected2, actual2);
+        Assert.assertEquals(expected3, actual3);
     }
 
 

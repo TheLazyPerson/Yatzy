@@ -4,12 +4,10 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by omk on 7/25/2016.
- */
+
 public class Yatzy {
 
-    int score;
+    private int score;
 
     public void validate(Integer... dice) {
         if (dice.length !=5){
@@ -99,6 +97,53 @@ public class Yatzy {
     }
 
     public int pair(int... dice) {
+        int pairScore = 0;
+        int max_difference = 0;
+        int val1 = 0 , val2 = 0;
+        Arrays.sort(dice);
+        for (int i = 0; i < dice.length - 1; i++) {
+            int x = dice[i+1] - dice[i];
+            if(x <= max_difference) {
+                max_difference = x;
+                val1 = dice[i];
+                val2 = dice[i+1];
+
+            }
+        }
+        if (val1 != 0 || val2 != 0)
+            pairScore = val1 + val2;
+
+        return pairScore;
+    }
+
+    public int twoPair(int... dice) {
+        int[] diceFrequency = new int[6];
+
+
+        for( int d : dice ) {
+
+            diceFrequency[d-1]++;
+        }
+
+        int numberOfPairs = 0;
+        int pairSum = 0;
+
+        for( int i = 0; i < diceFrequency.length; i++ ) {
+            //due to integer division you get only the number of pairs,
+            //i.e. if you have 3x 1 you get 1 pair, for 5x 1 you get 2 pairs
+            int num = diceFrequency[i] / 2;
+
+            //total the number of pairs is just increases
+            numberOfPairs += num;
+
+            //the total value of those pairs is the dice value (i+1)
+            //multiplied by the number of pairs and 2 (since it's a pair)
+            pairSum += (i + 1 ) * 2 * num;
+        }
+
+        if( numberOfPairs >= 2 ) {
+            return pairSum;
+        }
         return 0;
     }
 
